@@ -3,7 +3,7 @@
   "name": "Mining Empire: Gold Tycoon",
   "icons": [
     {
-      "src": "icon.png", 
+      "src": "icona.png", 
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
