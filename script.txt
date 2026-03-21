@@ -10,11 +10,7 @@ let minerLevel = 0;
 let gameStarted = false; // Check if game is running
 let audioUnlocked = false; 
 
-let costs = { miner: 30, warrior: 30, upMiner: 50, upWarrior: 50 };
-window.onload = () => {
-    loadGame();
-};
-
+let costs = { miner: 30, warrior: 60, upMiner: 100, upWarrior: 200 };
 
 const pickaxes = [
     { name: "Better Pickaxe", power: 1.5, cost: 200, bought: false },
@@ -101,17 +97,6 @@ function buyMiner() {
         updateUI();
     }
 }
-function sellMiner() {
-    if (gameStarted && miners > 0) {
-        miners--;
-        gold += 100;
-        document.getElementById('log').innerText = "Sold a Miner for 100 gold. 💸";
-        updateUI();
-    } else if (miners <= 0) {
-        document.getElementById('log').innerText = "You have no miners to sell!";
-    }
-}
-
 
 function buyWarrior() {
     if (gold >= costs.warrior) {
@@ -230,7 +215,7 @@ setInterval(() => {
         }
         updateUI();
     }, 5000);
-}, 40000);
+}, 25000);
 
 // UI Update
 function updateUI() {
@@ -255,8 +240,8 @@ function updateUI() {
     document.getElementById('buyWarrior').disabled = gold < costs.warrior;
     document.getElementById('upMiner').disabled = gold < costs.upMiner || minerLevel >= 500;
     document.getElementById('upWarrior').disabled = gold < costs.upWarrior;
+    
     renderTools();
-    saveGame()
 }
 
 function endGame() {

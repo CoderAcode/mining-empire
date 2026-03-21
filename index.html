@@ -6,7 +6,6 @@
     <title>Mining Empire</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
-    
 </head>
 <body>
     <div id="warning-overlay"></div>
@@ -22,7 +21,8 @@
                 <p>Start your journey?</p>
             </div>
             <div class="intro-buttons">
-                <button id="btn-start" onclick="startGame()">YES</button>                <button id="btn-howto" onclick="showHowTo()">How to play?</button>
+                <button id="btn-start" onclick="startGame()">YES</button>
+                <button id="btn-howto" onclick="showHowTo()">How to play?</button>
             </div>
         </div>
     </div>
@@ -54,6 +54,8 @@
             <button class="btn-gold" onclick="clickGold()">⛏️ Mine Gold</button>
             <div class="basic-buy">
                 <button class="btn-buy" id="buyMiner" onclick="buyMiner()">Miner</button>
+                <button id="sellMiner" class="btn-upgrade" onclick="sellMiner()">Sell Miner (+100 Gold)</button>
+
                 <button class="btn-buy" id="buyWarrior" onclick="buyWarrior()">Warrior</button>
             </div>
         </div>
