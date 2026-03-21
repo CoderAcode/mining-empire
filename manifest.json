@@ -3,9 +3,10 @@
   "name": "Mining Empire: Gold Tycoon",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/3011/3011116.png",
+      "src": "icon.png", 
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
   "start_url": "./index.html",
@@ -14,4 +15,3 @@
   "theme_color": "#050505",
   "orientation": "portrait"
 }
-
