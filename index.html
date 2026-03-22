@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mining Empire</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="warning-overlay"></div>
+    
+    <audio id="alarm-snd" src="syrena.mp3" preload="auto" loop></audio>
+    <audio id="success-snd" src="konfetti.mp3" preload="auto"></audio>
+    <audio id="lose-snd" src="lose.mp3" preload="auto"></audio>
+
+    <div id="intro-screen">
+        <div class="intro-content">
+            <h1>Mining Empire</h1>
+            <p>Wpisz swój unikalny nick:</p>
+            <input type="text" id="player-nick" placeholder="Twój Nick..." maxlength="15">
+            <div id="login-error"></div>
+            
+            <div class="intro-buttons">
+                <button id="btn-new" onclick="createNewGame()">NOWA GRA</button>
+                <button id="btn-load" onclick="loadExistingGame()">WCZYTAJ GRĘ</button>
+            </div>
+            <button class="btn-text-only" onclick="showHowTo()">Jak grać?</button>
+        </div>
+    </div>
+
+    <div id="leaderboard-modal" style="display: none;" onclick="hideLeaderboard()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <h2>🏆 TOP GÓRNICY</h2>
+            <ul id="leaderboard-list"></ul>
+            <button class="btn-close" onclick="hideLeaderboard()">ZAMKNIJ</button>
+        </div>
+    </div>
+
+    <div id="howto-modal" style="display: none;" onclick="hideHowTo()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <h2>Jak grać?</h2>
+            <ul style="text-align: left;">
+                <li>⛏️ Klikaj 'Mine Gold', by kopać.</li>
+                <li>👷 Górnicy (Miners) wydobywają sami.</li>
+                <li>⚔️ Wojownicy (Warriors) bronią przed atakami.</li>
+                <li>🛒 Ulepszaj sprzęt w sklepie.</li>
+            </ul>
+            <button class="btn-close" onclick="hideHowTo()">ZAMKNIJ</button>
+        </div>
+    </div>
+
+    <div id="game-ui" style="display: none;">
+        <button id="lb-toggle" onclick="showLeaderboard()">🏆</button>
+        <button id="shop-toggle" onclick="toggleShop()">🛒</button>
+
+        <div class="stats">
+            <h2 id="display-name" style="color: #f1c40f; margin: 0;">Commander</h2>
+            <h1>Gold: <span id="gold">0</span></h1>
+            <p>Miners: <span id="miners">0</span> | Warriors: <span id="warriors">0</span></p>
+            <small>Click Power: <span id="click-power">1</span> | Bonus: +<span id="miner-bonus">0</span>/s</small>
+        </div>
+
+        <div class="shop-main">
+            <button class="btn-gold" onclick="clickGold()">⛏️ MINE GOLD</button>
+            <div class="basic-buy">
+                <button class="btn-buy" id="buyMiner" onclick="buyMiner()">+Miner</button>
+                <button class="btn-upgrade-sell" onclick="sellMiner()">Sell Miner</button>
+                <button class="btn-buy" id="buyWarrior" onclick="buyWarrior()">+Warrior</button>
+            </div>
+        </div>
+
+        <div id="log">Witaj w kopalni!</div>
+
+        <div id="side-shop">
+            <div class="shop-tabs">
+                <button onclick="showTab('tools')">⛏️ Tools</button>
+                <button onclick="showTab('upgrades')">👱 Upgrades</button>
+                <button onclick="toggleShop()" style="background:#e74c3c;">✖</button>
+            </div>
+            <div id="tab-tools" class="tab-content">
+                <div id="tools-list"></div>
+            </div>
+            <div id="tab-upgrades" class="tab-content" style="display:none">
+                <button class="btn-upgrade" id="upMiner" onclick="upgradeMiners()">Upgrade Miner (+1/s)<br><span id="costMinerUp">50</span> G</button>
+                <button class="btn-upgrade" id="upWarrior" onclick="upgradeWarriors()">Upgrade Warrior (+1 HP)<br><span id="costWarriorUp">50</span> G</button>
+            </div>
+        </div>
+
+        <div id="game-over-screen" style="display: none;">
+            <div class="modal-box">
+                <h1 style="color: #e74c3c;">💀 GAME OVER</h1>
+                <p>Twój ostatni górnik zginął.</p>
+                <button class="btn-close" onclick="location.reload()">ZAGRAJ PONOWNIE</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
